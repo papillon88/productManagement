@@ -4,8 +4,8 @@
     "use strict";
     var app = angular.module("productManagement");
 
-    var ProductListController = function ($scope) {
-        $scope.products = [
+    var productListController = function ($scope,productResource) {
+        /*$scope.products = [
             {
                 "productId": 1,
                 "productName": "Leaf Rake",
@@ -30,7 +30,9 @@
                 "tags": ["tool"],
                 "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
             }
-        ];
+        ];*/
+
+
 
         $scope.showImage = false;
 
@@ -38,8 +40,12 @@
             $scope.showImage = !$scope.showImage;
         };
 
+        productResource.query(function (data) {
+            $scope.products = data;
+        });
+
     };
 
-    app.controller("ProductListController",["$scope",ProductListController]);
+    app.controller("productListController",["$scope","productResource",productListController]);
 
 }());

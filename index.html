@@ -8,8 +8,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.6/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-mocks.js"></script>
     <script src="./app/app.js"></script>
     <script src="./app/products/productListController.js"></script>
+    <script src="./common/services/common.services.js"></script>
+    <script src="./common/services/productResource.js"></script>
+    <script src="./common/services/productResourceMock.js"></script>
 
 </head>
 <body id="body-color" ng-app="productManagement">
@@ -20,7 +25,7 @@
         Product List
     </div>
     <div class="panel-body">
-        <table class="table" ng-controller="ProductListController">
+        <table class="table" ng-controller="productListController">
             <thead>
             <tr>
                 <td>
