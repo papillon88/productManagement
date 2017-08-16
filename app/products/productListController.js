@@ -32,6 +32,12 @@
             }
         ];
 
+        $scope.showImage = false;
+
+        $scope.toggleImage = function(){
+            $scope.showImage = !$scope.showImage;
+        };
+
     };
 
     app.controller("ProductListController",["$scope",ProductListController]);
