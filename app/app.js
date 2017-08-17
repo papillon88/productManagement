@@ -15,6 +15,10 @@
                 templateUrl: "app/products/productEditView.html",
                 controller: "productEditController"
             })
+            .when("/products/:productId", {
+                templateUrl: "app/products/productDetailView.html",
+                controller: "productDetailController"
+            })
             .otherwise({
                 redirectTo: "/"
         })

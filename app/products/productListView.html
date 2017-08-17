@@ -23,9 +23,13 @@
                     <img ng-src="{{product.imageUrl}}" ng-if="showImage" style="width:50px;margin:2px"
                          title="{{product.productName}}"/>
                 </td>
-                <td>{{product.productName}}</td>
+                <td>
+                    <a href="#/products/{{product.productId}}">
+                        {{product.productName}}
+                    </a>
+                </td>
                 <td>{{product.productCode}}</td>
-                <td>{{product.releaseDate}}</td>
+                <td>{{product.releaseDate | date}}</td>
                 <td>{{product.price | currency}}</td>
             </tr>
             </tbody>
