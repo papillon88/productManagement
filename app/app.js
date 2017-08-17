@@ -1,27 +1,36 @@
 (function () {
     "use strict";
-    var app = angular.module("productManagement", ["common.services", "productResourceMock", "ngRoute"]);
+    var app = angular.module("productManagement", ["common.services", "productResourceMock", "ui.router"]);
 
-    app.config(function ($routeProvider) {
-        $routeProvider
-            .when("/", {
+    app.config(["$stateProvider",
+        function ($stateProvider) {
+        $stateProvider
+            .state("welcome", {
+                url:"/",
                 templateUrl: "app/welcome.html"
             })
-            .when("/products", {
+            .state("productList", {
+                url:"/products",
                 templateUrl: "app/products/productListView.html",
                 controller: "productListController"
             })
-            .when("/products/edit/:productId", {
+            .state("productEdit", {
+                url: "/products/edit/:productId",
                 templateUrl: "app/products/productEditView.html",
                 controller: "productEditController"
             })
-            .when("/products/:productId", {
+            .state("productDetail", {
+                url: "/products/:productId",
                 templateUrl: "app/products/productDetailView.html",
-                controller: "productDetailController"
+                controller: "productDetailController",
+                resolve: {
+                    productResource: "productResource",
+                    product: function (productResource, $stateParams) {
+                        var productId = $stateParams.productId;
+                        return productResource.get({ productId: productId }).$promise;
+                    }
+                }
             })
-            .otherwise({
-                redirectTo: "/"
-        })
-    });
+    }]);
 
 }());
